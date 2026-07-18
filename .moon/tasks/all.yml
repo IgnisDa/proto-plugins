@@ -5,4 +5,4 @@ tasks:
     command: vitest --run --pool=forks --passWithNoTests
     inputs:
       - "**/*.ts"
-    platform: node
+    type: test

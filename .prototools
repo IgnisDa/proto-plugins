@@ -1,0 +1,6 @@
+node = "22.3.0"
+moon = "2.4.4"
+
+[plugins]
+dekit = "source:./dekit/plugin.toml"
+gitui = "source:./gitui/plugin.toml"

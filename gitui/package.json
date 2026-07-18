@@ -1,0 +1,5 @@
+{
+	"name": "proto-plugin-gitui",
+	"private": true,
+	"packageManager": "yarn@4.2.2"
+}

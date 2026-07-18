@@ -1,0 +1,20 @@
+# https://moonrepo.dev/docs/config/toolchain
+$schema: https://moonrepo.dev/schemas/toolchains.json
+
+proto:
+  version: "0.58.2"
+
+javascript:
+  packageManager: yarn
+  inferTasksFromScripts: false
+  syncProjectWorkspaceDependencies: true
+  dedupeOnLockfileChange: true
+  installDependencies: false
+
+node:
+  version: "22.3.0"
+
+yarn:
+  version: "4.2.2"
+  installArgs:
+    - --immutable
