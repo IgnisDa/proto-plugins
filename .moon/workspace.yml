@@ -1,10 +1,9 @@
 $schema: https://moonrepo.dev/schemas/workspace.json
 
 projects:
-  - "*"
-  - "!.*"
-  - "!__*"
+  - "dekit"
+  - "gitui"
 
 vcs:
-  manager: git
+  client: git
   defaultBranch: main
