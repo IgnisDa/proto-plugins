@@ -36,6 +36,7 @@ export function run({
 			await $`pwd`;
 			await $`proto plugin add ${name} source:./plugin.toml`;
 			await $`proto install ${name} ${version}`;
+			await $`proto pin ${name} ${version}`;
 			if (afterInstall) {
 				await afterInstall($);
 			}
