@@ -1,0 +1,10 @@
+$schema: https://moonrepo.dev/schemas/workspace.json
+
+projects:
+  - "*"
+  - "!.*"
+  - "!__*"
+
+vcs:
+  manager: git
+  defaultBranch: main

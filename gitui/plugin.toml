@@ -1,0 +1,27 @@
+# A TOML plugin for gitui:
+# https://moonrepo.dev/docs/proto/non-wasm-plugin
+
+name = "gitui"
+type = "cli"
+
+[platform.linux]
+download-file = "gitui-linux-{arch}.tar.gz"
+archs = ["x86_64", "aarch64"]
+
+[platform.macos]
+download-file = "gitui-mac{arch}.tar.gz"
+archs = ["aarch64", "x86_64"]
+
+[platform.macos.arch]
+aarch64 = ""
+x86_64 = "-x86"
+
+[platform.windows]
+download-file = "gitui-win.tar.gz"
+archs = ["x86_64"]
+
+[install]
+download-url = "https://github.com/gitui-org/gitui/releases/download/v{version}/{download_file}"
+
+[resolve]
+git-url = "https://github.com/gitui-org/gitui"

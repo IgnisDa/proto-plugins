@@ -1,0 +1,26 @@
+# A TOML plugin for dekit:
+# https://moonrepo.dev/docs/proto/non-wasm-plugin
+
+name = "dekit"
+type = "cli"
+
+[platform.linux]
+download-file = "dekit-{arch}-unknown-linux-musl.tar.gz"
+checksum-file = "SHA256SUMS"
+
+[platform.macos]
+download-file = "dekit-{arch}-apple-darwin.tar.gz"
+checksum-file = "SHA256SUMS"
+
+[platform.windows]
+download-file = "dekit-{arch}-pc-windows-msvc.zip"
+checksum-file = "SHA256SUMS"
+
+[install]
+download-url = "https://github.com/pvolok/dekit/releases/download/v{version}/{download_file}"
+download-url-canary = "https://github.com/pvolok/dekit/releases/download/canary/{download_file}"
+checksum-url = "https://github.com/pvolok/dekit/releases/download/v{version}/{checksum_file}"
+checksum-url-canary = "https://github.com/pvolok/dekit/releases/download/canary/{checksum_file}"
+
+[resolve]
+git-url = "https://github.com/pvolok/dekit"
