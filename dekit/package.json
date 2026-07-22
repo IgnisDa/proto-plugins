@@ -1,5 +1,4 @@
 {
 	"name": "proto-plugin-dekit",
-	"private": true,
-	"packageManager": "yarn@4.2.2"
+	"private": true
 }
