@@ -8,6 +8,7 @@ Community [proto](https://github.com/moonrepo/proto) TOML plugins.
 | --- | --- | --- |
 | `dekit` | [dekit](https://github.com/pvolok/dekit) — scriptable process manager (CLI, TUI, API) | [dekit/plugin.toml](./dekit/plugin.toml) |
 | `gitui` | [gitui](https://github.com/gitui-org/gitui) — blazing fast terminal-ui for git | [gitui/plugin.toml](./gitui/plugin.toml) |
+| `hunk` | [Hunk](https://github.com/modem-dev/hunk) — review-first terminal diff viewer | [hunk/plugin.toml](./hunk/plugin.toml) |
 
 ## Usage
 

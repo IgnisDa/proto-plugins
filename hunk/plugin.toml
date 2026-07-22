@@ -1,0 +1,34 @@
+# A TOML plugin for Hunk:
+# https://moonrepo.dev/docs/proto/non-wasm-plugin
+
+name = "Hunk"
+type = "cli"
+
+[platform.linux]
+archive-prefix = "hunkdiff-linux-{arch}"
+download-file = "hunkdiff-linux-{arch}.tar.gz"
+archs = ["x86_64", "aarch64"]
+
+[platform.macos]
+archive-prefix = "hunkdiff-darwin-{arch}"
+download-file = "hunkdiff-darwin-{arch}.tar.gz"
+archs = ["x86_64", "aarch64"]
+
+[platform.windows]
+archive-prefix = "hunkdiff-windows-{arch}"
+download-file = "hunkdiff-windows-{arch}.tar.gz"
+archs = ["x86_64"]
+
+[install]
+download-url = "https://github.com/modem-dev/hunk/releases/download/v{version}/{download_file}"
+
+[install.arch]
+aarch64 = "arm64"
+x86_64 = "x64"
+
+[install.exes.hunk]
+exe-path = "hunk"
+primary = true
+
+[resolve]
+git-url = "https://github.com/modem-dev/hunk"

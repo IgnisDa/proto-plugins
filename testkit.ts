@@ -2,10 +2,10 @@
 import { readFileSync } from "node:fs";
 import { cp, mkdtemp } from "node:fs/promises";
 import { tmpdir } from "node:os";
-import { join as pathJoin } from "node:path";
+import { delimiter, join as pathJoin } from "node:path";
 import toml from "toml";
 import { test } from "vitest";
-import { $ as $$, type Shell, cd } from "zx/core";
+import { $ as $$, type Shell } from "zx/core";
 
 export function run({
 	name,
@@ -23,16 +23,26 @@ export function run({
 	const supportPlatforms = Object.keys(data.platform);
 	const skip = !supportPlatforms.includes(platform);
 	console.log(`[${name}] supports: [${supportPlatforms}], current: ${platform}, skip: ${skip}`);
-	const $ = $$({ verbose: true });
-
 	test.skipIf(skip)(
 		`proto_install_${name}_${version}`,
 		{ timeout: Number.POSITIVE_INFINITY },
 		async () => {
 			const dir = await mkdtemp(`${tmpdir()}/proto-plugin-test-${name}`);
+			const protoHome = await mkdtemp(`${tmpdir()}/proto-plugin-home-${name}`);
 			const tomlPathDist = pathJoin(dir, "plugin.toml");
+			const $ = $$({
+				cwd: dir,
+				verbose: true,
+				env: {
+					...process.env,
+					PATH: [pathJoin(protoHome, "shims"), process.env["PATH"]]
+						.filter(Boolean)
+						.join(delimiter),
+					PROTO_CONFIG_MODE: "local",
+					PROTO_HOME: protoHome,
+				},
+			});
 			await cp(tomlPathSource, tomlPathDist);
-			cd(dir);
 			await $`pwd`;
 			await $`proto plugin add ${name} source:./plugin.toml`;
 			await $`proto install ${name} ${version}`;
